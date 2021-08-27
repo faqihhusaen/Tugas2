@@ -2,7 +2,7 @@ import processing
 import string
 from const import EN_REL_FREQ
 
-
+#Berfungsi untuk menghitung huruf
 def get_letter_counts(text):
     text_upper = text.upper()
     letter_counts = {}
@@ -10,13 +10,13 @@ def get_letter_counts(text):
         letter_counts[letter] = text_upper.count(letter)
     return letter_counts
 
-
+#Berfungsi untuk menghitung frekuensi huruf
 def _get_letter_frequencies(text):
     letter_counts = get_letter_counts(text)
     frequencies = {letter: count/len(text) for letter, count in letter_counts.items()}
     return frequencies
 
-
+#Berfungsi menggeser huruf pada text sebanyak amount
 def shift(text, amount):
     shifted = ''
     letters = string.ascii_uppercase
@@ -28,7 +28,7 @@ def shift(text, amount):
 def _corr(text, lf):
     return sum([(lf[letter]*EN_REL_FREQ[letter]) for letter in text])
 
-
+#Berfungsi mencari huruf key
 def _find_key_letter(text, lf):
     key_letter = ''
     max_corr = 0
@@ -40,7 +40,7 @@ def _find_key_letter(text, lf):
             key_letter = letter
     return key_letter
 
-
+#Berfungsi memndapatkan key
 def restore_key(cyphertext, key_len):
     key = ''
     blocks = processing.get_blocks(text=cyphertext, size=key_len)

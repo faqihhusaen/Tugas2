@@ -1,6 +1,6 @@
 from math import sqrt
 
-
+#Mendapatkan posisi dari perulangan sequence dalam bentuk array
 def _repeated_seq_pos(text, seq_len):
     seq_pos = {}  # entries of sequence : [positions]
     for i, char in enumerate(text):
@@ -13,11 +13,11 @@ def _repeated_seq_pos(text, seq_len):
     rep_seq_pos = [(seq, seq_pos[seq]) for seq in repeated]
     return rep_seq_pos
 
-
+#Berfungsi mendapatkan spasi
 def _get_spacings(positions):
     return [positions[i+1] - positions[i] for i in range(len(positions)-1)]
 
-
+#Mendapatkan faktor bilangan
 def _get_factors(number):
     factors = set()
     for i in range(1, int(sqrt(number))+1):
@@ -26,7 +26,7 @@ def _get_factors(number):
             factors.add(number//i)
     return sorted(factors)
 
-
+#Berfungsi mencari kandidat panjang kunci
 def _candidate_key_lengths(factor_lists, max_key_len):
     all_factors = [factor_lists[lst][fac] for lst in range(len(factor_lists)) for fac in range(len(factor_lists[lst]))]
     # exclude factors larger than suspected max key length
@@ -35,7 +35,7 @@ def _candidate_key_lengths(factor_lists, max_key_len):
     sorted_candidates = sorted(set(candidate_lengths), key=lambda x: all_factors.count(x), reverse=True)
     return sorted_candidates
 
-
+#Berfungsi mencari panjang kunci
 def find_key_length(cyphertext, seq_len, max_key_len):
     # find repeated sequences and their positions
     rsp = _repeated_seq_pos(text=cyphertext, seq_len=seq_len)

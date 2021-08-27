@@ -1,8 +1,9 @@
+#Berfungsi mendapatkan blocks dari text
 def get_blocks(text, size):
     blocks = [text[i:i+size] for i in range(0, len(text)-size, size)]
     return blocks
 
-
+#Berfungsi mendapatkan columns dari text blocks
 def get_columns(text_blocks):
     group_size = len(text_blocks[0])
     columns = []
@@ -13,7 +14,7 @@ def get_columns(text_blocks):
         columns.append(column)
     return columns
 
-
+#Berfungsi mengubah columns menjadi blocks
 def to_blocks(cols):
     col_size = len(cols[0])
     blocks = []

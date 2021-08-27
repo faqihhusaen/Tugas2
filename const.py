@@ -1,3 +1,4 @@
+#Berisi konstanta yang dibutuhkan 
 SEQ_LEN = 7
 MAX_KEY_LEN = 8
 EN_IC = 0.67

@@ -4,14 +4,14 @@ import freq_analysis as fa
 from sys import maxsize
 from const import EN_IC
 
-
+#Merupakan fungsi dari Index of Coincidence 
 def _ic(letter_counts):
     numerator = sum([letter_counts[l]*(letter_counts[l]-1) for l in string.ascii_uppercase])
     text_size = sum(occurrences for occurrences in letter_counts.values())
     denominator = text_size*(text_size-1)
     return numerator/denominator
 
-
+#Berfungsi mencari panjang key
 def find_key_length(cyphertext, max_key_len):
     min_diff = maxsize
     key_len = 0
